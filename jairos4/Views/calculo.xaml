@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="jairos4.Views.calculo"
+             Title="Sistema de Calificaciones - Instituto Sudamericano"
+             BackgroundColor="#0F172A">
+
+    <ScrollView>
+        <!-- Contenedor amplio estilo Dashboard Web -->
+        <VerticalStackLayout Padding="35" Spacing="25" MaximumWidthRequest="950" HorizontalOptions="Center" VerticalOptions="Center">
+
+            <!-- Encabezado Estilo Web Header -->
+            <Border StrokeThickness="0" BackgroundColor="#1E293B" StrokeShape="RoundRectangle 16" Padding="25">
+                <Grid ColumnDefinitions="*, Auto">
+                    <VerticalStackLayout Grid.Column="0" Spacing="5" VerticalOptions="Center">
+                        <Label Text="Instituto Sudamericano" 
+                               FontSize="22" 
+                               FontAttributes="Bold" 
+                               TextColor="White"/>
+                        <Label Text="Panel de Control Académico — Registro de Notas de Tres Parciales" 
+                               FontSize="13" 
+                               TextColor="#94A3B8"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <!-- Tarjeta Principal del Formulario -->
+            <Border Stroke="#334155" StrokeThickness="1" StrokeShape="RoundRectangle 16" BackgroundColor="#1E293B" Padding="30">
+                <VerticalStackLayout Spacing="20">
+
+                    <!-- Selección de Estudiante -->
+                    <Grid ColumnDefinitions="*, Auto" ColumnSpacing="15">
+                        <VerticalStackLayout Grid.Column="0" Spacing="6">
+                            <Label Text="Seleccionar Estudiante" FontSize="13" FontAttributes="Bold" TextColor="#F8FAFC"/>
+                            <Picker x:Name="pickerEstudiantes" 
+                                    Title="-- Haga clic para elegir un estudiante --"
+                                    ItemDisplayBinding="{Binding .}"
+                                    TextColor="#F8FAFC"
+                                    TitleColor="#64748B"
+                                    BackgroundColor="#0F172A"
+                                    SelectedIndexChanged="OnEstudianteSelectedIndexChanged"/>
+                        </VerticalStackLayout>
+
+                        <!-- Fecha de Registro -->
+                        <VerticalStackLayout Grid.Column="1" Spacing="6" WidthRequest="200">
+                            <Label Text="Fecha de Registro" FontSize="13" FontAttributes="Bold" TextColor="#F8FAFC"/>
+                            <DatePicker x:Name="datePickerFecha" TextColor="White"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Label Text="* Al cambiar de estudiante, se limpiarán los campos de notas automáticamente." 
+                           FontSize="11" 
+                           TextColor="#64748B" 
+                           Margin="0,-10,0,0"/>
+
+                    <!-- Separador Visual -->
+                    <BoxView HeightRequest="1" BackgroundColor="#334155" Margin="0,5"/>
+
+                    <!-- Grid de 3 Parciales (Diseño Web de 3 Columnas) -->
+                    <Grid ColumnDefinitions="*, *, *" ColumnSpacing="15">
+
+                        <!-- PARCIAL 1 -->
+                        <VerticalStackLayout Grid.Column="0" Spacing="12">
+                            <Label Text="Parcial 1" FontAttributes="Bold" TextColor="#38BDF8" FontSize="15"/>
+
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Seguimiento 1 (30%)" FontSize="11" TextColor="#CBD5E1"/>
+                                <Entry x:Name="txtSeguimiento1" Placeholder="0 - 10" Keyboard="Numeric" BackgroundColor="#0F172A" TextColor="White" PlaceholderColor="#64748B"/>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Examen 1 (20%)" FontSize="11" TextColor="#CBD5E1"/>
+                                <Entry x:Name="txtExamen1" Placeholder="0 - 10" Keyboard="Numeric" BackgroundColor="#0F172A" TextColor="White" PlaceholderColor="#64748B"/>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+
+                        <!-- PARCIAL 2 -->
+                        <VerticalStackLayout Grid.Column="1" Spacing="12">
+                            <Label Text="Parcial 2" FontAttributes="Bold" TextColor="#38BDF8" FontSize="15"/>
+
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Seguimiento 2 (30%)" FontSize="11" TextColor="#CBD5E1"/>
+                                <Entry x:Name="txtSeguimiento2" Placeholder="0 - 10" Keyboard="Numeric" BackgroundColor="#0F172A" TextColor="White" PlaceholderColor="#64748B"/>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Examen 2 (20%)" FontSize="11" TextColor="#CBD5E1"/>
+                                <Entry x:Name="txtExamen2" Placeholder="0 - 10" Keyboard="Numeric" BackgroundColor="#0F172A" TextColor="White" PlaceholderColor="#64748B"/>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+
+                        <!-- PARCIAL 3 -->
+                        <VerticalStackLayout Grid.Column="2" Spacing="12">
+                            <Label Text="Parcial 3" FontAttributes="Bold" TextColor="#38BDF8" FontSize="15"/>
+
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Seguimiento 3 (30%)" FontSize="11" TextColor="#CBD5E1"/>
+                                <Entry x:Name="txtSeguimiento3" Placeholder="0 - 10" Keyboard="Numeric" BackgroundColor="#0F172A" TextColor="White" PlaceholderColor="#64748B"/>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Examen 3 (20%)" FontSize="11" TextColor="#CBD5E1"/>
+                                <Entry x:Name="txtExamen3" Placeholder="0 - 10" Keyboard="Numeric" BackgroundColor="#0F172A" TextColor="White" PlaceholderColor="#64748B"/>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                    <!-- Botón de Acción Principal Estilo Web -->
+                    <Button Text="CALCULAR NOTAS DEL ESTUDIANTE" 
+                            BackgroundColor="#2563EB" 
+                            TextColor="White" 
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            CornerRadius="8"
+                            HeightRequest="48"
+                            Clicked="OnCalcularClicked"
+                            Margin="0,15,0,0"/>
+
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
